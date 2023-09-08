@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow-y: scroll;
+}
+
+html,
+body,
+#app {
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+html,
+#app {
+  scroll-behavior: smooth;
+}
+
+.title {
+  color: black;
+  font-size: 36px;
+}
+
+.subheading {
+  font-size: 13px;
+  color: gray;
+}
+
+.label-input {
+  color: #535461;
+  text-align: left;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+}
+
+.input-wrapper {
+  width: 400px;
+}
+
+button {
+  color: white;
+  outline: none;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  transition: 0.3s;
+
+  &.btn-primary {
+    background: black;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  &.btn-secondary {
+    background: lightgray;
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 2px gray;
+  }
+}
