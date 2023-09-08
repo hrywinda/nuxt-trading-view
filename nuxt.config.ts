@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
+  buildModules: ["@nuxtjs/composition-api/module"],
   css: ["~/assets/base.scss"],
   store: true,
   postcss: {
@@ -15,6 +16,10 @@ export default defineNuxtConfig({
   },
   modules: ["nuxt-vue3-google-signin"],
   googleSignIn: {
-    clientId: "1010629603082-914r6g9t1gdq33p4tribsg56e231acpt.apps.googleusercontent.com",
+    clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
+  },
+  publicRuntimeConfig: {
+    VUE_APP_REDIRECT_URI: process.env.VUE_APP_REDIRECT_URI,
+    VUE_APP_API_KEY: process.env.VUE_APP_API_KEY,
   },
 });
