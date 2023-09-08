@@ -35,7 +35,7 @@ export default defineComponent({
     const router = useRouter();
 
     const onLogginSucces = (response) => {
-      //   const { credential } = response;
+      const { credential } = response;
       store.dispatch("loginSuccess");
       router.push({ path: "/" });
     };
@@ -73,13 +73,68 @@ export default defineComponent({
   height: 100%;
 
   .left-image {
-    background: #ffbd80;
+    background: lightblue;
     height: 100%;
   }
 
   .right-content {
     text-align: left;
     padding: 96px;
+  }
+}
+@media (max-width: 913px) {
+  .login {
+    display: block;
+
+    .left-image {
+      height: unset;
+
+      img {
+        margin: auto;
+        max-width: 70%;
+        height: auto;
+      }
+    }
+
+    .right-content {
+      text-align: center;
+
+      .form-login {
+        width: 400px;
+        margin: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .login {
+    display: block;
+
+    .left-image {
+      height: unset;
+
+      img {
+        margin: auto;
+        max-width: 70%;
+        height: auto;
+      }
+    }
+
+    .right-content {
+      text-align: center;
+      padding: 24px;
+
+      .form-login {
+        width: 100%;
+        margin: auto;
+
+        .input-wrapper {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    }
   }
 }
 </style>
