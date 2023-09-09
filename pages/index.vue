@@ -36,8 +36,9 @@ import axios from "axios";
 import { onUnmounted } from "vue";
 
 export default {
-  name: "DashboardPage",
-  middleware: ["auth"],
+  name: "home",
+  meta: { isAuthenticated: true },
+  middleware: "auth",
   setup() {
     // const config = useRuntimeConfig();
     // const apiKey = config.VUE_APP_API_KEY;
@@ -50,7 +51,6 @@ export default {
         .get(apiUrl)
         .then((response) => {
           const stockSymbols = Object.keys(response.data);
-          // Assign the fetched data to the stockData ref
           stockData.value = stockSymbols.map((symbol) => response.data[symbol].quote);
         })
         .catch((error) => {
@@ -58,7 +58,6 @@ export default {
         });
     };
 
-    // Create a ref to hold the stock data
     const stockData = ref(null);
 
     return {
@@ -72,9 +71,7 @@ export default {
     };
   },
   mounted() {
-    // this.getData();
     this.fetchStockData();
-    // Remove the parentheses from this.fetchStockData
     this.refreshInterval = setInterval(this.fetchStockData, 15 * 1000);
 
     onUnmounted(() => {

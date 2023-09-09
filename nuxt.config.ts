@@ -11,15 +11,28 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  router: {
-    middleware: ["auth"],
-  },
   modules: ["nuxt-vue3-google-signin"],
   googleSignIn: {
     clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
   },
-  publicRuntimeConfig: {
-    VUE_APP_REDIRECT_URI: process.env.VUE_APP_REDIRECT_URI,
-    VUE_APP_API_KEY: process.env.VUE_APP_API_KEY,
+  runtimeConfig: {
+    public: {
+      VUE_APP_API_KEY: process.env.VUE_APP_API_KEY,
+    },
+  },
+  router: {
+    routes: [
+      {
+        name: "home",
+        path: "/",
+        component: "~/pages/index.vue",
+      },
+      {
+        name: "login",
+        path: "/login",
+        component: "~/pages/login/index.vue",
+      },
+      // Other routes...
+    ],
   },
 });
